@@ -9,8 +9,18 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+import environ
+import os
+from dotenv import load_dotenv
 
 from pathlib import Path
+
+load_dotenv()
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,15 +92,24 @@ WSGI_APPLICATION = 'mybookstore.wsgi.application'
 # }
 DATABASES = {
    'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'mybookstore',
-       'USER': 'postgres',
-       'PASSWORD': 'root',
-       'HOST': '127.0.0.1',
-       'PORT': '5432',
+       'ENGINE': os.getenv("ENGINE"),
+       'NAME': os.getenv("NAME"),
+       'USER': os.getenv("USER"),
+       'PASSWORD': os.getenv("PASSWORD"),
+       'HOST': os.getenv("HOST"),
+       'PORT': os.getenv("PORT"),
    }
 }
-
+# DATABASES = {
+#    'default': {
+#        'ENGINE': env("ENGINE"),
+#        'NAME': env("NAME"),
+#        'USER': env("USER"),
+#        'PASSWORD': env("PASSWORD"),
+#        'HOST': env("HOST"),
+#        'PORT': env("PORT"),
+#    }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
