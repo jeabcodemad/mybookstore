@@ -20,7 +20,6 @@ Including another URLconf
 # from django.urls import path, include
 
 from django.contrib import admin
-
 from django.urls import path, include
 # from django.urls import path, include
 
@@ -29,5 +28,8 @@ urlpatterns = [
     # path('api/', include('books.urls'))
 
     # path('api-auth/', include('rest_framework.urls')),
+    
+    path("api/books/", include("books.urls")),
+
 
 ]

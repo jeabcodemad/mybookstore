@@ -12,15 +12,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import environ
 import os
 from dotenv import load_dotenv
+from django.utils.encoding import force_str
 
 from pathlib import Path
 
 load_dotenv()
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
+# env = environ.Env(
+#     # set casting, default value
+#     DEBUG=(bool, False)
+# )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,7 +36,9 @@ SECRET_KEY = 'django-insecure-mja0t9!mbqkrbxzki@w$3-bh8p2i1e@t-^sukt^_k1)pm$zp8&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1"
+]
 
 
 # Application definition
@@ -51,7 +54,7 @@ INSTALLED_APPS = [
     'rest_framework',
     # 'corsheaders',
     # 'books'
-    'mybookstore.books.apps.BooksConfig'
+    'books.apps.BooksConfig'
 ]
 
 MIDDLEWARE = [
