@@ -19,7 +19,7 @@ load_dotenv()
 
 env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, False)
+    DEBUG=(bool, True)
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -51,7 +51,9 @@ INSTALLED_APPS = [
     'rest_framework',
     # 'corsheaders',
     # 'books'
-    'mybookstore.books.apps.BooksConfig'
+    # 'mybookstore.books.apps.BooksConfig'
+    # 'books.apps.BooksConfig'
+    'books'
 ]
 
 MIDDLEWARE = [

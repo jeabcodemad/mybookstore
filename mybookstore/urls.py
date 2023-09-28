@@ -22,11 +22,14 @@ Including another URLconf
 from django.contrib import admin
 
 from django.urls import path, include
+from books import views
 # from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('api/', include('books.urls'))
+    # path("api/books/", include("books.urls")),
+    path('api/books/', views.BookList.as_view()),
 
     # path('api-auth/', include('rest_framework.urls')),
 
